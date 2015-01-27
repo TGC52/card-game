@@ -17,6 +17,11 @@ $(document).ready(function(){
         for(var i=0;i<hand.length;i++){
             el.append(hand[i].getHTML());
         }
+        var el = $('#computerHand')
+        el.html('');
+        for(var i=0;i<computerHand.length;i++){
+            el.append(computerHand[i].getHTML());
+        }
     }
     var doShuffle = function(){
         cardDeck.shuffle();

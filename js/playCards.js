@@ -3,6 +3,8 @@ $(document).ready(function(){
     cardDeck.spread(); // show it
 
     var hand = [];
+    var computerHand = [];
+    
     var showError = function(msg){
         $('#error').html(msg).show();
         setTimeout(function(){
@@ -20,13 +22,23 @@ $(document).ready(function(){
         cardDeck.shuffle();
         cardDeck.spread(); // update card table
     }
-    var doDrawCard = function(){
+    var doDrawCard1 = function(){
         var c = cardDeck.draw();
         if(!c){
             showError('no more cards');
             return;
         }
         hand[hand.length] = c;
+        cardDeck.spread();
+        showHand();
+    }
+    var doDrawCard2 = function(){
+        var c = cardDeck.draw();
+        if(!c){
+            showError('no more cards');
+            return;
+        }
+        computerHand[computerHand.length] = c;
         cardDeck.spread();
         showHand();
     }
@@ -39,17 +51,28 @@ $(document).ready(function(){
         cardDeck.spread(); // update card table
     }
     $('#shuffler').click(doShuffle);
-    $('#draw').click(doDrawCard);
+    $('#draw1').click(doDrawCard1);
+    $('#draw2').click(doDrawCard2);
     $('#shuffleDraw').click(function(){
         doShuffle();
         doDrawCard();
     });
-    $('#addCard').click(function(){
+    $('#addCard1').click(function(){
         if(!hand.length){
             showError('your hand is empty');
             return;
         }
         var c = hand.pop();
+        showHand();
+        cardDeck.addCard(c);
+        cardDeck.spread();
+    });
+    $('#addCard2').click(function(){
+        if(!computerHand.length){
+            showError('Computer hand is empty');
+            return;
+        }
+        var c = computerHand.pop();
         showHand();
         cardDeck.addCard(c);
         cardDeck.spread();

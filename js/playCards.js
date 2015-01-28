@@ -47,6 +47,29 @@ $(document).ready(function(){
         cardDeck.spread();
         showHand();
     }
+    
+    var doDeal = function(){
+        var c;
+        for(i=0; i < 7, i++){
+            c = cardDeck.draw();
+            if(!c){
+                showError('no more cards');
+                return;
+            }
+            hand[hand.length] = c;
+            
+            c = cardDeck.draw();
+            if(!c){
+                showError('no more cards');
+                return;
+            }
+            computerHand[computerHand.length] = c;
+            
+            cardDeck.spread();
+            showHands();
+        }
+    }
+    
     var doOrderByRank = function(){
         cardDeck.orderByRank();
         cardDeck.spread(); // update card table
@@ -84,6 +107,7 @@ $(document).ready(function(){
     });
     $('#orderByRank').click(doOrderByRank);
     $('#orderBySuit').click(doOrderBySuit);
+    $('#dealer').click(doDeal);
 
 });
 /*

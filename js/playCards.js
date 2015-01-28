@@ -11,7 +11,7 @@ $(document).ready(function(){
             $('#error').fadeOut('slow');
         },3000);
     }
-    var showHand = function(){
+    var showHands = function(){
         var el = $('#yourHand')
         el.html('');
         for(var i=0;i<hand.length;i++){
@@ -35,7 +35,7 @@ $(document).ready(function(){
         }
         hand[hand.length] = c;
         cardDeck.spread();
-        showHand();
+        showHands();
     }
     var doDrawCard2 = function(){
         var c = cardDeck.draw();
@@ -45,7 +45,7 @@ $(document).ready(function(){
         }
         computerHand[computerHand.length] = c;
         cardDeck.spread();
-        showHand();
+        showHands();
     }
     
     var doDeal = function(){
@@ -66,7 +66,7 @@ $(document).ready(function(){
             computerHand[computerHand.length] = c;
             
             cardDeck.spread();
-            showHand();
+            showHands();
         }
     }
     
@@ -91,7 +91,7 @@ $(document).ready(function(){
             return;
         }
         var c = hand.pop();
-        showHand();
+        showHands();
         cardDeck.addCard(c);
         cardDeck.spread();
     });
@@ -101,7 +101,7 @@ $(document).ready(function(){
             return;
         }
         var c = computerHand.pop();
-        showHand();
+        showHands();
         cardDeck.addCard(c);
         cardDeck.spread();
     });

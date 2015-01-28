@@ -2,7 +2,7 @@ $(document).ready(function(){
     var cardDeck = $("#cardDeck").playingCards();
     cardDeck.spread(); // show it
 
-    var hand = [];
+    var yourHand = [];
     var computerHand = [];
     
     var showError = function(msg){
@@ -14,8 +14,8 @@ $(document).ready(function(){
     var showHands = function(){
         var el = $('#yourHand')
         el.html('');
-        for(var i=0;i<hand.length;i++){
-            el.append(hand[i].getHTML());
+        for(var i=0;i<yourHand.length;i++){
+            el.append(yourHand[i].getHTML());
         }
         var el = $('#computerHand')
         el.html('');
@@ -33,7 +33,7 @@ $(document).ready(function(){
             showError('no more cards');
             return;
         }
-        hand[hand.length] = c;
+        yourHand[yourHand.length] = c;
         cardDeck.spread();
         showHands();
     }
@@ -56,7 +56,7 @@ $(document).ready(function(){
                 showError('no more cards');
                 return;
             }
-            hand[hand.length] = c;
+            yourHand[yourHand.length] = c;
             
             cardDeck.spread();
             showHands();
@@ -89,11 +89,11 @@ $(document).ready(function(){
         doDrawCard();
     });
     $('#addCard1').click(function(){
-        if(!hand.length){
+        if(!yourHand.length){
             showError('your hand is empty');
             return;
         }
-        var c = hand.pop();
+        var c = yourHand.pop();
         showHands();
         cardDeck.addCard(c);
         cardDeck.spread();

@@ -48,30 +48,7 @@ $(document).ready(function(){
         showHands();
     }
     
-    var doDeal = function(){
-        var c;
-        for(i=0; i < 7, i++){
-            c = cardDeck.draw();
-            if(!c){
-                showError('no more cards');
-                return;
-            }
-            yourHand[yourHand.length] = c;
-            
-            cardDeck.spread();
-            showHands();
-            
-            c = cardDeck.draw();
-            if(!c){
-                showError('no more cards');
-                return;
-            }
-            computerHand[computerHand.length] = c;
-            
-            cardDeck.spread();
-            showHands();
-        }
-    }
+    
     
     var doOrderByRank = function(){
         cardDeck.orderByRank();

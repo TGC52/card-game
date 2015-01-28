@@ -66,7 +66,7 @@ $(document).ready(function(){
             computerHand[computerHand.length] = c;
             
             cardDeck.spread();
-            showHands();
+            showHand();
         }
     }
     
